@@ -1,20 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title (click)="obterDocumentos()">
+      Listagem de documentos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  @if (documentos.length === 0){
+    <h1>Sem documentos</h1>
+  } @else {
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col><strong>ID</strong></ion-col>
+        <ion-col><strong>Nome</strong></ion-col>
+        <ion-col><strong>Criador</strong></ion-col>
+        <ion-col><strong>Data</strong></ion-col>
+        <ion-col><strong>Imagem</strong></ion-col>
+        <ion-col><strong>Apagar</strong></ion-col>
+      </ion-row>
+      @for (doc of documentos; track doc.id){
+        <ion-row>
+          <ion-col>{{ doc.id }}</ion-col>
+          <ion-col>{{ doc.nome }}</ion-col>
+          <ion-col>{{ doc.criador }}</ion-col>
+          <ion-col>{{ doc.dataCriacao }}</ion-col>
+          <ion-col>Imagem</ion-col>
+          <ion-col><ion-icon name="trash-outline"></ion-icon></ion-col>
+        </ion-row>
+      }
+    </ion-grid>
+  }
+  </ion-content>
+  

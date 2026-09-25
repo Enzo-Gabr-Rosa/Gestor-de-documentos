@@ -1,0 +1,7 @@
+{
+  "name": "GestorDeDocumentos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
